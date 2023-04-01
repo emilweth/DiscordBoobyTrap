@@ -1,9 +1,9 @@
 name: Releases
 
 on:
-  pull_request:
-    branches:
-      - 'main'
+  push:
+    tags:
+      - '*'
 
 jobs:
   build:
@@ -24,7 +24,26 @@ jobs:
       - name: Check version
         run: bin/boobytrap --version
 
-#      - uses: ncipollo/release-action@v1
-#        with:
-#          artifacts: "release.tar.gz,foo/*.txt"
-#          bodyFile: "body.md"
+      - name: Update CHANGELOG
+        id: changelog
+        uses: requarks/changelog-action@v1
+        with:
+          token: ${{ github.token }}
+          tag: ${{ github.ref_name }}
+
+      - uses: ncipollo/release-action@v1
+        with:
+          allowUpdates: true
+          draft: false
+          makeLatest: true
+          name: ${{ github.ref_name }}
+          body: ${{ steps.changelog.outputs.changes }}
+          artifacts: "bin/boobytrap"
+          token: ${{ github.token }}
+
+      - name: Commit CHANGELOG.md
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          branch: main
+          commit_message: 'docs: update CHANGELOG.md for ${{ github.ref_name }} [skip ci]'
+          file_pattern: CHANGELOG.md
