@@ -2,9 +2,11 @@ package messageHandler
 
 import (
 	"DiscordBoobyTrap/internal/config"
-	"fmt"
+
 	"github.com/bwmarrin/discordgo"
 	log "github.com/sirupsen/logrus"
+
+	"fmt"
 )
 
 var (
