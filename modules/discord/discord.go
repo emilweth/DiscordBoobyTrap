@@ -17,14 +17,12 @@ var (
 	err          error
 )
 
-func init() {
+func Connect() {
 	discordToken, err = config.GetDiscordToken()
 	if err != nil {
 		log.WithError(err).Panic()
 	}
-}
 
-func Connect() {
 	var err error
 	dg, err = discordgo.New("Bot " + discordToken)
 	if err != nil {
