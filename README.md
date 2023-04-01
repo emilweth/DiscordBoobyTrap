@@ -1,6 +1,7 @@
 # DiscordBoobyTrap
 
-DiscordBoobyTrap is a discord bot that ban every user posting in a given channel
+DiscordBoobyTrap is a discord bot that ban every user posting in a given channel<br />
+_Note: this is also a sandbox i never wrote go before please be kind_
 
 ## Installation
 

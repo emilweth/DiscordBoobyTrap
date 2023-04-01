@@ -12,14 +12,12 @@ var (
 	err       error
 )
 
-func init() {
+func Handle(s *discordgo.Session, m *discordgo.MessageCreate) {
 	channelId, err = config.GetDiscordChannelId()
 	if err != nil {
 		log.WithError(err).Panic()
 	}
-}
 
-func Handle(s *discordgo.Session, m *discordgo.MessageCreate) {
 	fullUsername := fmt.Sprintf("%s#%s", m.Author.Username, m.Author.Discriminator)
 
 	if m.ChannelID == channelId {
