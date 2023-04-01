@@ -2,6 +2,7 @@ package config
 
 import (
 	"errors"
+
 	"github.com/gookit/config/v2"
 )
 

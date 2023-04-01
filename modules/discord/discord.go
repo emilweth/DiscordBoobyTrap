@@ -3,12 +3,14 @@ package discord
 import (
 	"DiscordBoobyTrap/internal/config"
 	"DiscordBoobyTrap/modules/discord/messageHandler"
-	"fmt"
-	"github.com/bwmarrin/discordgo"
-	log "github.com/sirupsen/logrus"
 	"os"
 	"os/signal"
 	"syscall"
+
+	"github.com/bwmarrin/discordgo"
+	log "github.com/sirupsen/logrus"
+
+	"fmt"
 )
 
 var (

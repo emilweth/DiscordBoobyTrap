@@ -4,8 +4,10 @@ import (
 	"DiscordBoobyTrap/internal/config"
 	"DiscordBoobyTrap/modules/discord"
 	"flag"
-	"fmt"
+
 	log "github.com/sirupsen/logrus"
+
+	"fmt"
 )
 
 var Version = "dev"
