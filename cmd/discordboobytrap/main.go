@@ -11,7 +11,6 @@ import (
 var Version = "dev"
 
 func init() {
-	log.WithField("Version", Version).Info("Starting DiscordBoobyTrap")
 	level, err := log.ParseLevel(config.GetVerbosity())
 	if err != nil {
 		log.Fatalf("Invalid verbosity level: %v", err)
@@ -22,7 +21,7 @@ func init() {
 }
 
 func main() {
-	versionFlag := flag.Bool("version", false, "Print the version and exit")
+	versionFlag := flag.Bool("version", false, "Print the version")
 	flag.Parse()
 
 	if *versionFlag {
@@ -30,5 +29,6 @@ func main() {
 		return
 	}
 
+	log.WithField("Version", Version).Info("Starting DiscordBoobyTrap")
 	discord.Connect()
 }
