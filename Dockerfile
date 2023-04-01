@@ -1,5 +1,6 @@
 # syntax=docker/dockerfile:1
 FROM golang:1.20-alpine as build
+ARG VERSION=dev
 
 WORKDIR /app
 
@@ -9,7 +10,7 @@ RUN go mod download
 
 COPY . ./
 
-RUN go build -o /boobytrap DiscordBoobyTrap/cmd/discordboobytrap
+RUN go build -ldflags="-X 'main.Version=$VERSION'" -o /boobytrap DiscordBoobyTrap/cmd/discordboobytrap
 
 ## Deploy
 FROM scratch
